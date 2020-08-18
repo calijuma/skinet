@@ -30,6 +30,14 @@ namespace API
             services.AddDbContext<StoreContext>(x => x.UseSqlite(_config.GetConnectionString("DefaultConnection")));
             services.AddApplicationServices(); // Added from Extension/ApplicationServicesExtensions
             services.AddSwaggerDocumentation(); // Added from Extension/SwaggerServiceExtensions
+
+            services.AddCors(opt => 
+            {
+                opt.AddPolicy("CorsPolicy", policy => 
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                });
+            });
             
         }
 
@@ -51,6 +59,8 @@ namespace API
             app.UseRouting();
 
             app.UseStaticFiles(); // To serve static content like images  - Order important
+
+            app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
 

@@ -15,6 +15,22 @@ namespace Infrastructure.Data
             {
                 query = query.Where(spec.Criteria);
             }
+            // Added Order By
+            if (spec.OrderBy != null)
+            {
+                query = query.OrderBy(spec.OrderBy);
+            }
+            // Added Order By Descending
+            if (spec.OrderByDescending != null)
+            {
+                query = query.OrderByDescending(spec.OrderByDescending);
+            }
+            // Added IsPagingEnabled ... this have to be the last filter
+            if (spec.IsPagingEnabled)
+            {
+                query = query.Skip(spec.Skip).Take(spec.Take);
+            }
+
 
             query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
 
