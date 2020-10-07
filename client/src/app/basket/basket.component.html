@@ -1,4 +1,4 @@
-<div class="container mt-2">
+<!-- <div class="container mt-2">
     <div *ngIf="(basket$ | async) === null">
         <p>There are no items in your basket</p>
     </div>
@@ -32,4 +32,47 @@
             </div>
         </div>
     </div>
+</div> -->
+
+<div class="container mt-2">
+<section class="section my-5 pb-5">
+
+    <div class="card card-ecommerce">
+      <div class="card-body">
+        <div *ngIf="(basket$ | async) === null">
+            <p>There are no items in your basket</p>
+        </div>
+
+        <!-- Shopping Cart table -->
+        <div class="table-responsive"  *ngIf="basket$ | async" >
+            <app-basket-summary 
+                (decrement)="decrementItemQuantity($event)"
+                (increment)="incrementItemQuantity($event)"
+                (remove)="removeBasketItem($event)"
+                [items]="(basket$ | async).items">
+            </app-basket-summary>
+        </div>
+        <!-- /.Shopping Cart table -->
+
+        <div class="row">
+            <div class="col-lg-6 col-md-12 offset-lg-6 offset-md-0">
+                <app-order-totals 
+                    *ngIf="(basketTotals$ | async)"
+                    [shippingPrice]="(basketTotals$ | async).shipping"
+                    [subtotal]="(basketTotals$ | async).subtotal" 
+                    [total]="(basketTotals$ | async).total">
+                </app-order-totals>
+                <div class="d-flex justify-content-end">
+                    <a routerLink="/checkout" class="btn btn-primary btn-rounded waves-effect waves-light">
+                        Proceed to checkout
+                    </a>
+                </div>
+            </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
 </div>

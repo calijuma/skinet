@@ -1,4 +1,97 @@
-<div class="d-flex flex-column flex-md-row align-items-center justify-content-between p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
+<!-- Navbar -->
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+  <div class="container-fluid">
+
+    <!-- Brand -->
+    <img src="/assets/images/logo.png" class="logo mr-5" alt="logo" routerLink="/">    
+
+    <!-- Collapse -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Left -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <a class="nav-link waves-effect font-weight-normal" [routerLink]="['/']">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link waves-effect font-weight-normal" [routerLink]="['/shop']">Shop</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link waves-effect font-weight-normal" [routerLink]="['/test-error']">Errors</a>
+        </li>
+      </ul>
+
+      <!-- Right -->
+      <ul class="navbar-nav nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link waves-effect d-flex align-items-center justify-content-between" routerLink="/basket">
+            <span *ngIf="(basket$ | async) as basket" class="badge red z-depth-1 mr-1">{{basket.items.length}}</span>
+            <i class="fa fa-shopping-cart mx-2"></i>
+            <span class="clearfix d-none d-sm-inline-block font-weight-bold"> Cart </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="https://www.facebook.com/Traveldiscnetwork/" class="nav-link waves-effect" target="_blank">
+            <i class="fa fa-facebook-f"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="https://www.facebook.com/Traveldiscnetwork/" class="nav-link waves-effect" target="_blank">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <ng-container *ngIf="(currentUser$ | async) == null">
+            <div class="dropdown m-2" dropdown>
+              <a class="dropdown-toggle" style="cursor: pointer;" dropdownToggle>
+                <strong>Profile</strong>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
+                <a routerLink="/account/login" class="dropdown-item d-flex align-items-center py-2">
+                  <i class="fa fa-user mr-3 pr-1"></i> Login
+                </a>
+                <a routerLink="/account/register" class="dropdown-item d-flex align-items-center py-2">
+                  <i class="fa fa-sign-in mr-3"></i> Sign up
+                </a>
+              </div>
+            </div>
+          </ng-container>
+      
+          <ng-container *ngIf="currentUser$ | async">
+            <div class="dropdown m-2" dropdown>
+              <a class="dropdown-toggle" style="cursor: pointer;" dropdownToggle>
+                <strong>Welcome {{(currentUser$ | async).displayName}}</strong>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right" style="cursor: pointer;" *dropdownMenu>
+                <a routerLink="/basket" class="dropdown-item d-flex align-items-center py-2">
+                  <i class="fa fa-shopping-cart mr-3"></i> View Basket
+                </a>
+                <a routerLink="/orders" class="dropdown-item d-flex align-items-center py-2">
+                  <i class="fa fa-history mr-3"></i> View Orders
+                </a>
+                <div class="dropdown-divider"></div>
+                <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
+                  <i class="fa fa-sign-out mr-3"></i> Logout
+                </a>
+              </div>
+            </div>      
+          </ng-container>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+</nav>
+<!-- Navbar -->
+<!-- <div class="d-flex flex-column flex-md-row align-items-center justify-content-between p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm fixed-top">
   <img src="/assets/images/logo.png" class="logo" alt="logo" routerLink="/">
   <nav class="my-2 my-md-0 mr-md-3 text-uppercase" style="font-size: larger;">
     <a class="p-2" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
@@ -36,4 +129,4 @@
     </ng-container>
     
   </div>  
-</div>
+</div> -->

@@ -5,10 +5,14 @@
     display: inline;
     border-radius: 0;
 }
+.xng-breadcrumb-link {
+  font-weight: 400;
+}
 
 label.xng-breadcrumb-trail {
     margin-bottom: 0;
-    color: orange;
+    color: #e95420;
+    font-weight: bold;
 }
 
 .xng-breadcrumb-separator {
@@ -17,4 +21,79 @@ label.xng-breadcrumb-trail {
 
 .StripeElement {
     height: 3.125em;
+}
+
+/* ************************************** Template code here ************************************** */
+/* Required height of parents of the Half Page Carousel for proper displaying carousel itself */
+html,
+body,
+.view {
+  height: 100%; }
+
+/* Half Page Carousel itself*/
+.carousel {
+  height: 50%; }
+  .carousel .carousel-inner {
+    height: 100%; }
+    .carousel .carousel-inner .carousel-item,
+    .carousel .carousel-inner .active {
+      height: 100%; }
+
+/* Adjustment for mobile devices*/
+@media (max-width: 776px) {
+  .carousel {
+    height: 100%; } }
+
+/* Footer color for sake of consistency with Navbar */
+.page-footer {
+  background-color: #929FBA; }
+
+html,
+body{
+  font-size: 1.2rem;
+}
+
+
+  html,
+  body,
+  header,
+  .carousel {
+    height: 60vh;
+  }
+
+  @media (max-width: 740px) {
+
+    html,
+    body,
+    header,
+    .carousel {
+      height: 100vh;
+    }
+  }
+
+  @media (min-width: 800px) and (max-width: 850px) {
+
+    html,
+    body,
+    header,
+    .carousel {
+      height: 100vh;
+    }
+  }
+/* ************************************** Template code here ************************************** */
+
+.ngxImageZoomContainer{
+  width: auto !important;
+  height: auto !important;
+}
+
+.ngxImageZoomThumbnail{
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 780px){
+  #checkoutSteps .nav {
+      display: inline;
+  }
 }

@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<!-- <div class="container mt-3">
   <div class="row">
 
       <section class="col-3">
@@ -66,4 +66,211 @@
 
       </section>
   </div>
+</div> -->
+
+
+
+
+<div class="container-fluid">
+
+
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark primary-color mt-0 mb-5">
+
+        <!-- Navbar brand -->
+        <a class="font-weight-bold white-text mr-4" href="#">Categories</a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+            <!-- Links -->
+            <ul class="navbar-nav mr-auto">
+                
+                <ng-container *ngIf="brands">
+                    <li class="nav-item dropdown mega-dropdown active">
+                        <a class="nav-link dropdown-toggle  no-caret waves-effect waves-light" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Brands</a>
+                        <div class="dropdown-menu mega-menu v-2 row z-depth-1 white" aria-labelledby="navbarDropdownMenuLink1">
+                            <div class="row mx-md-4 mx-1">
+                                <div class="ccol-md-12 col-xl-12 sub-menu my-xl-12 mt-3 mb-3">
+                                    <!-- <h6 class="sub-title text-uppercase font-weight-bold blue-text">Brands</h6> -->
+                                    <ul class="caret-style pl-0">
+                                        <li class="list-group-item" *ngFor="let brand of brands"
+                                            [class.active]="brand.id === this.shopParams.brandId" 
+                                            [value]="brand.id"
+                                            (click)="onBrandSelected(brand.id)">
+                                            {{brand.name}}
+                                        </li>
+                                        <!-- <li class=""><a class="menu-item mb-0 waves-effect waves-light" href="">Sony</a></li>
+                                        <li class=""><a class="menu-item waves-effect waves-light" href="">Lenovo</a></li>
+                                        <li class=""><a class="menu-item waves-effect waves-light" href="">Apple</a></li>
+                                        <li class=""><a class="menu-item waves-effect waves-light" href="">Dell</a></li>
+                                        <li class=""><a class="menu-item waves-effect waves-light" href="">Asus</a></li> -->
+                                    </ul>
+                                </div>                                
+                            </div>
+                        </div>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="types">
+                    <li class="nav-item dropdown mega-dropdown">
+                        <a class="nav-link dropdown-toggle no-caret waves-effect waves-light" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Types</a>
+                        <div class="dropdown-menu mega-menu v-2 row z-depth-1 white" aria-labelledby="navbarDropdownMenuLink1">
+                            <div class="row mx-md-4 mx-1">
+                                <div class="col-md-12 col-xl-12 sub-menu my-xl-12 mt-3 mb-3">
+                                    <!-- <h6 class="sub-title text-uppercase font-weight-bold blue-text">Types</h6> -->
+                                    <ul class="caret-style pl-0">
+                                        <li class="list-group-item" *ngFor="let type of types" 
+                                            [class.active]="type.id === this.shopParams.typeId"
+                                            [value]="type.id" 
+                                            (click)="onTypeSelected(type.id)">
+                                            {{type.name}}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ng-container>
+            </ul>
+            <!-- Links -->
+
+            <!-- Search form -->
+            <!-- <form class="search-form" role="search">
+                <div class="form-group md-form my-0 waves-light waves-effect waves-light">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+            </form> -->
+            <div class="form-group md-form my-0 waves-light waves-effect waves-light d-flex justify-content-end" *ngIf="products">
+                <input (keyup.enter)="onSearch()" id="categorySearch" class="form-control white-text mr-2" #search placeholder="Search" type="text">
+                <button (click)="onSearch()" class="btn btn-deep-orange">Search</button>
+                <button (click)="onReset()" class="btn btn-light">Reset</button>
+            </div>
+        </div>
+        <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+
+
+    <div class="row pt-4">
+
+        <!-- Sidebar -->
+        <div class="col-lg-2">
+
+            <div class="">
+                <!-- Grid row -->
+                <div class="row">
+                    
+                    <!-- Filter by category-->
+                    <ng-container *ngIf="brands">
+                        <div class="col-md-6 col-lg-12 mb-5">
+                            <h5 class="font-weight-bold dark-grey-text"><strong>Brands</strong></h5>
+                            <div class="divider"></div>
+                            <ul class="pl-2">
+                                <li class="list-group-item" *ngFor="let brand of brands"
+                                    [class.active]="brand.id === this.shopParams.brandId" 
+                                    [value]="brand.id"
+                                    (click)="onBrandSelected(brand.id)">
+                                    {{brand.name}}
+                                </li>
+                            </ul>
+                        </div>
+                    </ng-container>
+                    <!-- /Filter by category-->
+                </div>
+                <!-- /Grid row -->
+
+                <!-- Grid row -->
+                <div class="row">
+
+                    <!-- Filter by category-->
+                    <ng-container *ngIf="types">
+                        <div class="col-md-6 col-lg-12 mb-5">
+                            <h5 class="font-weight-bold dark-grey-text"><strong>Types</strong></h5>
+                            <div class="divider"></div>
+                            <ul class="pl-2">
+                                <li class="list-group-item" *ngFor="let type of types" 
+                                    [class.active]="type.id === this.shopParams.typeId"
+                                    [value]="type.id" 
+                                    (click)="onTypeSelected(type.id)">
+                                    {{type.name}}
+                                </li>
+                            </ul>
+                        </div>
+                    </ng-container>
+                    <!-- /Filter by category-->
+                </div>
+                <!-- /Grid row -->
+            </div>
+
+        </div>
+        <!-- /.Sidebar -->
+
+        <!-- Content -->
+        <div class="col-lg-10">
+
+            <!-- Filter Area -->
+            <div class="row">
+
+                <div class="col-md-5 mt-3">
+
+                    <!-- paging-header -->
+                    <app-paging-header 
+                        [totalCount]="totalCount" 
+                        [pageSize]="this.shopParams.pageSize" 
+                        [pageNumber]="this.shopParams.pageNumber">                
+                    </app-paging-header>                    
+                    <!-- /.paging-header -->
+
+                </div>
+                <ng-container *ngIf="types && brands"> 
+                    <div class="col-md-7 mt-3 ng-star-inserted d-flex justify-content-end">
+                        <h5 class="font-weight-bold dark-grey-text mb-0 mr-2"><strong>Sort</strong></h5>
+                        <select class="mdb-select grey-text initialized" (change)="onSortSelected($event.target.value)">
+                            <option *ngFor="let sort of sortOptions" 
+                                [selected]="shopParams.sort === sort.value"
+                                [value]="sort.value">
+                                {{sort.name}}
+                            </option>
+                        </select>
+                    </div>
+                </ng-container> 
+            </div>
+            <!-- /.Filter Area -->
+
+            <!-- Products Grid -->
+            <section class="section pt-4">
+
+                <div class="row">
+                    <div class="col-xl-3 col-lg-6 col-md-6 mb-4" *ngFor="let item of products">
+                        <app-product-item [product]="item"></app-product-item>
+                    </div>
+                </div>                
+
+                <!--Grid row-->
+                <div class="row justify-content-center mb-4" *ngIf="totalCount > 0">
+
+                    <!--Pagination -->
+                    <app-pager 
+                      [pageSize]="shopParams.pageSize" 
+                      [totalCount]="totalCount" 
+                      [pageNumber]="shopParams.pageNumber"
+                      (pageChanged)="onPageChanged($event)" 
+                    ></app-pager>
+                    
+                    <!--/Pagination -->
+
+                </div>
+                <!--Grid row-->
+            </section>
+            <!-- /.Products Grid -->
+
+        </div>
+        <!-- /.Content -->
+
+    </div>
+
 </div>

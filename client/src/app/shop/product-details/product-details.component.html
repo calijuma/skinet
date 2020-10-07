@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<!-- <div class="container mt-5">
     <div class="row" *ngIf="product">
     <div class="col-6">
         <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="img-fluid w-100">
@@ -20,4 +20,96 @@
         </div>
     </div>
     </div>
+</div> -->
+
+<div class="container pt-3">
+
+    <!-- Section: product details -->
+    <section id="productDetails" class="pb-5" *ngIf="product">
+
+        <!--News card-->
+        <div class="card mt-2 hoverable">
+            <div class="row mt-5">
+                <div class="col-lg-7">
+                    <lib-ngx-image-zoom
+                        [thumbImage]=product.pictureUrl
+                        [fullImage]=fullImage
+                        [zoomMode]="'hover'"
+                    ></lib-ngx-image-zoom>
+                </div>
+                <div class="col-lg-5 text-center text-md-left">
+                    <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">
+                        <strong>{{product.name}} </strong>
+                    </h2>
+                    <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">bestseller</span>
+                    
+                    
+                    <span class="badge badge-success product mb-4 ml-2">SALE</span>
+                    <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
+                        <span class="red-text font-weight-bold">
+                            <strong>{{product.price | currency}}</strong>
+                        </span>
+                        <span class="grey-text">
+                            <small>
+                                <s>{{product.price | currency}}</s>
+                            </small>
+                        </span>
+                    </h3>
+
+                    <p class="ml-xl-0 ml-4">
+                        {{product.description}}
+                    </p>
+                    <!-- <p class="ml-xl-0 ml-4">
+                        <strong>Storage: </strong>64GB</p>
+                    <p class="ml-xl-0 ml-4">
+                        <strong>Size: </strong>9.6-inch</p>
+                    <p class="ml-xl-0 ml-4">
+                        <strong>Resolution: </strong>2048 x 1536</p> -->
+                    <p class="ml-xl-0 ml-4">
+                        <strong>Availability: </strong>In stock</p>
+                    
+                    <div class="row ml-xl-0 ml-4 mt-3 mb-4">
+                        <div class="d-flex justify-content-start align-items-center">
+                            <i (click)="decrementQuantity()" class="fa fa-minus-circle text-danger mr-2" style="cursor: pointer; font-size: 2em;"></i>
+                            <span class="font-weight-bold" style="font-size: 1.5em;">{{quantity}}</span>
+                            <i (click)="incrementQuantity()" class="fa fa-plus-circle text-danger mx-2" style="cursor: pointer; font-size: 2em;"></i>
+                            <button (click)="addItemToBasket()" class="btn btn-primary btn-rounded waves-effect waves-light">
+                                <i class="fa fa-cart-plus mr-2" aria-hidden="true"></i> Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Add to Cart -->
+                    <!--<section class="color">
+                        <div class="mt-5">
+                             <p class="grey-text">Choose your color</p>
+                            <div class="row text-center text-md-left">
+
+                                <div class="col-md-4 col-12 ">
+                                    <div class="form-group">
+                                        <input class="form-check-input" name="group100" type="radio" id="radio100" checked="checked">
+                                        <label for="radio100" class="form-check-label dark-grey-text">White</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input class="form-check-input" name="group100" type="radio" id="radio101">
+                                        <label for="radio101" class="form-check-label dark-grey-text">Silver</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <input class="form-check-input" name="group100" type="radio" id="radio102">
+                                        <label for="radio102" class="form-check-label dark-grey-text">Gold</label>
+                                    </div>
+                                </div>
+                            </div> 
+                        </div>
+                    </section>-->
+                    <!-- /.Add to Cart -->
+                </div>
+            </div>
+        </div>
+        <!--News card-->
+
+    </section>
+    <!-- Section: product details -->    
 </div>

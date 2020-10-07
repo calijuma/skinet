@@ -1,0 +1,44 @@
+.product-table img {
+    max-height: 150px;
+    min-width: 50px;
+}
+
+@media only screen and (max-width: 768px){
+    .product-table, .product-table tbody, .product-table th, .product-table td, .product-table tr {
+        display: block;
+        text-align: center;
+    }
+    .product-table thead{
+        display: none;
+    }
+    .product-table td {
+        padding-top: 1.5rem;
+        padding-bottom: .4rem;
+    }
+    .product-table td:nth-of-type(1):before {
+        content: "Product";
+        font-weight: 400;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    .product-table td:nth-of-type(2):before {
+        content: "Price";
+        font-weight: 400;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    .product-table td:nth-of-type(3):before {
+        content: "QTY";
+        font-weight: 400;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    .product-table td:nth-of-type(4):before {
+        content: "Amount";
+        font-weight: 400;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    
+
+}

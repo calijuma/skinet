@@ -1,4 +1,4 @@
-<div class="card h-100 shadow-sm">
+<!-- <div class="card h-100 shadow-sm">
     <div class="image position-relative" style="cursor: pointer;">
         <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="img-fluid bg-info">
         <div class="d-flex align-items-center justify-content-center hover-overlay">
@@ -13,4 +13,46 @@
         </a>
         <span class="mb-2">{{product.price | currency}}</span>
     </div>
+</div> -->
+<div class="card h-100 card-ecommerce">
+
+    <!--Card image-->
+    <div class="view overlay">
+        <img src="{{product.pictureUrl}}" alt="{{product.name}}" class="img-fluid" alt="">
+        <a routerLink="/shop/{{product.id}}">
+            <div class="mask rgba-white-slight waves-effect waves-light"></div>
+        </a>
+    </div>
+    <!--Card image-->
+
+    <!--Card content-->
+    <div class="card-body d-flex flex-column">
+        <!--Category & Title-->
+
+        <h5 class="card-title mb-1"><strong><a routerLink="/shop/{{product.id}}" class="dark-grey-text">{{product.name}}</a></strong></h5>
+        <!--<span class="badge badge-danger mb-2">bestseller</span> -->
+        <!-- Rating -->
+        <ul class="rating">
+            <li><i class="fa fa-star blue-text"></i></li>
+            <li><i class="fa fa-star blue-text"></i></li>
+            <li><i class="fa fa-star blue-text"></i></li>
+            <li><i class="fa fa-star blue-text"></i></li>
+            <li><i class="fa fa-star grey-text"></i></li>
+        </ul>
+
+        <!--Card footer-->
+        <div class="card-footer mt-auto">
+            <div class="row mb-0 d-flex">
+                <span class=""><strong>{{product.price | currency}}</strong></span>
+                <span class="ml-auto">
+                    <a (click)="addItemToBasket()" class="addToCartIconLink" data-placement="top" title="Add to Cart" data-original-title="Add to Cart">
+                        <i class="fa fa-shopping-cart red-text ml-3"></i>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <!--Card content-->
+
 </div>
+<!--Card-->
